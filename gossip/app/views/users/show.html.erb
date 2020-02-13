@@ -1,0 +1,41 @@
+<h1 class="font-weight-light">Mon profil</h1>
+
+
+  <h2 class="font-weight-light">Mes infos </h2>
+
+    <h3 class="font-weight-light">Mon email : </h3>
+      <%=@current_user.email%> <br/><br/>
+
+    <h3 class="font-weight-light">Description : </h3>
+      <%=@current_user.description%> <br/><br/>
+
+    <h3 class="font-weight-light">Prénom : </h3>
+      <%=@current_user.first_name%> <br/><br/>
+
+    <h3 class="font-weight-light">Nom : </h3>
+      <%=@current_user.last_name%> <br/><br/>
+
+    <h3 class="font-weight-light">Membre depuis : </h3>
+      <%=@current_user.created_at%> <br/><br/>
+
+  <h2 class="font-weight-light">Mes événements </h2><br/>
+
+
+<% @my_admin_events.each do |one_event| %><br>
+
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" url="<%event_path(one_event.id)%>" src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=60/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= one_event.title  %></h5>
+      <p class="card-text"><%= one_event.description  %></p>
+      <a class="btn btn-primary" <%= link_to "En savoir plus", event_path(one_event.id)%></a>
+    </div>
+  </div>
+  <br />
+
+ <% end %>
+
+
+
+
+

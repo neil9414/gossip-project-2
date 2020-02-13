@@ -1,0 +1,6 @@
+<div>
+  <p>Voici la liste des personnes présentes à votre événement </p>
+  <% @attendees.each do |user| %><br>
+    <p class="card-text"><%= user.first_name  %> <%= user.last_name  %> </p>
+  <% end %>
+</div><br/>

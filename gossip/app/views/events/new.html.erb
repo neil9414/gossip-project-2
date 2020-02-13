@@ -1,0 +1,72 @@
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+  <input type="hidden" name="authenticity_token" value= <%= form_authenticity_token %> >
+  <br />
+
+  <div class="row justify-content-center align-self-center mx-5">
+    <div class="col-3">
+    <%= label_tag 'Le titre' %>
+    </div>
+    <div class="col-3">
+    <%= text_field_tag 'title', value = nil, options = {style:"width:100%"} %>
+    </div>
+  </div>     
+  <br />
+
+  <div class="row justify-content-center align-self-center mx-5">
+    <div class="col-3">
+    <%= label_tag 'La description' %>
+    </div>
+    <div class="col-3">
+    <%= text_area_tag 'description', value = Faker::ChuckNorris.fact*2, options = {style:"width:100%"} %>
+    </div>
+  </div>
+  <br />
+
+  <div class="row justify-content-center align-self-center mx-5">
+    <div class="col-3">
+    <%= label_tag 'La durée' %>
+    </div>
+    <div class="col-3">
+    <%= text_field_tag 'duration', value = (5*rand(1..20)), options = {style:"width:100%"} %>
+    </div>
+  </div>     
+  <br />
+
+  <div class="row justify-content-center align-self-center mx-5">
+    <div class="col-3">
+    <%= label_tag 'Le prix' %>
+    </div>
+    <div class="col-3">
+    <%= text_field_tag 'price', value = rand(1..1000), options = {style:"width:100%"} %>
+    </div>
+  </div>     
+  <br />
+
+  <div class="row justify-content-center align-self-center mx-5">
+    <div class="col-3">
+    <%= label_tag 'Le lieu' %>
+    </div>
+    <div class="col-3">
+    <%= text_field_tag 'location', value = Faker::Address.city, options = {style:"width:100%"} %>
+    </div>
+  </div>     
+  <br />
+
+  <div class="row justify-content-center align-self-center mx-5">
+    <div class="col-3">
+    <%= label_tag 'La date' %>
+    </div>
+    <div class="col-3">
+    <%= date_field_tag 'start_date', value = Faker::Date.forward(days: 40), options = {style:"width:100%"} %>
+    </div>
+  </div>     
+  <br />
+
+  <div class="row justify-content-center align-self-center mx-5">
+    <div class="col-3">
+      <%= submit_tag "Valider", class: 'btn btn-primary'  %>
+    </div>
+  </div>
+  <br />
+
+<% end %>

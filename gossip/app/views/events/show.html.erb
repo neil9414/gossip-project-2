@@ -1,0 +1,59 @@
+<h1 class="font-weight-light">Détail de l'évenement</h1>
+<br/>
+<div>
+  <h2 class="font-weight-light">Début : </h2>
+  <%=@event.start_date%> <br/>
+</div><br/>
+
+<% if user_signed_in? && @event.admin_id == current_user.id%>
+  <a class="btn btn-danger" <%= link_to "Voir mon event", event_attendances_path(@event.id)%>
+<% elsif user_signed_in? && @event.users.ids.include?(current_user.id)%>
+  <div class="text-muted font-weight-bold">Vous êtes inscrit à cet event.</div>
+<%elsif user_signed_in?%>
+  <a class="btn btn-danger" <%= link_to "S'inscrire", new_event_attendance_charge_path(@event.id,current_user.id)%>
+<%end%>
+
+<div>
+<h2 class="font-weight-light">Durée : </h2>
+<%=@event.duration%><br/>
+</div><br/>
+
+<div>
+<h2 class="font-weight-light">Titre : </h2>
+<%=@event.title%><br/>
+</div><br/>
+
+<div>
+<h2 class="font-weight-light">Description : </h2>
+<%=@event.description%><br/>
+</div><br/>
+
+<div>
+<h2 class="font-weight-light">Prix : </h2>
+<%=@event.price%><br/>
+</div><br/>
+
+<div>
+<h2 class="font-weight-light">Ville : </h2>
+<%=@event.location%><br/>
+</div><br/>
+
+<div>
+<h2 class="font-weight-light">Admin : </h2>
+<%=@event.admin_id%><br/>
+</div><br/>
+
+<div>
+<h2 class="font-weight-light">Créé le : </h2>
+<%=@event.created_at%><br/>
+</div><br/>
+
+<div>
+<h2 class="font-weight-light">Mise à jour le : </h2>
+<%=@event.updated_at%><br/>
+</div><br/>
+
+
+
+<a class="btn btn-primary" <%= link_to "Gérer", event_attendances_path(@event.id)%></a>
+

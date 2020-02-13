@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eventbrite2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+  
+  </head>
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+    <div class="container">
+      <a class="navbar-brand" href="<%= root_path %>">EventBrite</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="<%= new_event_path %>">Créer un événement</a>
+    </li>
+    <%if user_signed_in? %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" href="" aria-expanded="false"><%= current_user.first_name %></a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon profil</a>
+          <a class="dropdown-item" <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></a>
+        </div>
+      </li>
+    <%else%>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" href="" aria-expanded="false">S'inscrire / Se connecter</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="<%= new_user_registration_path %>">S'inscrire</a>
+          <a class="dropdown-item" href="<%= new_user_session_path %>">Se connecter</a>
+        </div>
+      </li>
+    <%end%>
+
+  </ul>
+      </div>
+    </div>
+  </nav>
+ 
+ <body>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+        
+         <%= yield %>
+
+      </div>
+    </div>
+  </div>
+  
+  </body>
+
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small> ©Julien @ THP2019</small>
+    </div>
+  </section>
+
+</html>
+
+
+
